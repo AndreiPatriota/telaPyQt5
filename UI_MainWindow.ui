@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>511</width>
-    <height>207</height>
+    <height>247</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -53,26 +53,26 @@
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="btnSoma">
+      <widget class="QPushButton" name="btnSoma1">
        <property name="font">
         <font>
          <pointsize>18</pointsize>
         </font>
        </property>
        <property name="text">
-        <string>Soma</string>
+        <string>+ 1</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btnSubtrai">
+      <widget class="QPushButton" name="btnSoma2">
        <property name="font">
         <font>
          <pointsize>18</pointsize>
         </font>
        </property>
        <property name="text">
-        <string>Subtrai</string>
+        <string>+2</string>
        </property>
       </widget>
      </item>
@@ -93,11 +93,26 @@
    <widget class="QLineEdit" name="leditValor">
     <property name="geometry">
      <rect>
-      <x>360</x>
+      <x>350</x>
       <y>120</y>
-      <width>131</width>
+      <width>141</width>
       <height>31</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cmbOp">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>170</y>
+      <width>321</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>18</pointsize>
+     </font>
     </property>
    </widget>
   </widget>
@@ -116,50 +131,50 @@
  <resources/>
  <connections>
   <connection>
-   <sender>btnSoma</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>on_btnSoma_click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>81</x>
-     <y>142</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>65</x>
-     <y>102</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btnSubtrai</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>on_btnSubtrai_click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>229</x>
-     <y>142</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>287</x>
-     <y>110</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>btnZera</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>on_bntZera_click()</slot>
+   <slot>on_btnZera_click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>139</x>
-     <y>131</y>
+     <x>230</x>
+     <y>115</y>
     </hint>
     <hint type="destinationlabel">
-     <x>262</x>
-     <y>173</y>
+     <x>408</x>
+     <y>89</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnSoma1</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>on_btnSoma1_click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>76</x>
+     <y>162</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>66</x>
+     <y>55</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnSoma2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>on_btnSoma2_click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>162</x>
+     <y>162</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>152</x>
+     <y>52</y>
     </hint>
    </hints>
   </connection>
@@ -170,12 +185,12 @@
    <slot>on_btnValor_click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>300</x>
-     <y>148</y>
+     <x>315</x>
+     <y>169</y>
     </hint>
     <hint type="destinationlabel">
-     <x>455</x>
-     <y>79</y>
+     <x>400</x>
+     <y>209</y>
     </hint>
    </hints>
   </connection>
@@ -183,24 +198,41 @@
    <sender>leditValor</sender>
    <signal>textChanged(QString)</signal>
    <receiver>MainWindow</receiver>
-   <slot>on_leditValor_chaged()</slot>
+   <slot>on_leditValor_change()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>459</x>
-     <y>156</y>
+     <x>446</x>
+     <y>160</y>
     </hint>
     <hint type="destinationlabel">
-     <x>483</x>
-     <y>116</y>
+     <x>377</x>
+     <y>115</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cmbOp</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>on_cmbOp_change()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>180</x>
+     <y>204</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>365</x>
+     <y>27</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
-  <slot>on_btnSoma_click()</slot>
-  <slot>on_btnSubtrai_click()</slot>
-  <slot>on_bntZera_click()</slot>
+  <slot>on_btnSoma1_click()</slot>
+  <slot>on_btnSoma2_click()</slot>
+  <slot>on_btnZera_click()</slot>
   <slot>on_btnValor_click()</slot>
-  <slot>on_leditValor_chaged()</slot>
+  <slot>on_leditValor_change()</slot>
+  <slot>on_cmbOp_change()</slot>
  </slots>
 </ui>

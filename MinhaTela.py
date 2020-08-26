@@ -14,24 +14,25 @@ class MinhaTela(QMainWindow, Ui_MainWindow):
         self.valLcdNumber = 0.0
         self.lcdNumber.display(self.valLcdNumber)
         self.custom_value = 0.0
-        self.btnValor.setText('0')
+        self.btnValor.setText('+0')
+        self.cmbOp.addItems(['soma', 'subtrai'])
 
 
     #EVENT-HANDLERS VÃO AQUI
     @QtCore.pyqtSlot()
-    def on_btnSoma_click(self):
-        self.valLcdNumber += 1
+    def on_btnSoma1_click(self):
+        self.valLcdNumber += int(self.btnSoma1.text())
         self.lcdNumber.display(self.valLcdNumber)
 
 
     @QtCore.pyqtSlot()
-    def on_btnSubtrai_click(self):
-        self.valLcdNumber -= 2
+    def on_btnSoma2_click(self):
+        self.valLcdNumber += int(self.btnSoma2.text())
         self.lcdNumber.display(self.valLcdNumber)
 
 
     @QtCore.pyqtSlot()
-    def on_bntZera_click(self):
+    def on_btnZera_click(self):
         try:
             val = QMessageBox.question(self, 'Mensagem', 'Deseja Zerar o Display?',QMessageBox.Yes, QMessageBox.No)
             if val == QMessageBox.Yes:
@@ -45,21 +46,27 @@ class MinhaTela(QMainWindow, Ui_MainWindow):
 
 
     @QtCore.pyqtSlot()
-    def on_leditValor_chaged(self):
+    def on_leditValor_change(self):
         tx = str(self.leditValor.text())
-        print('entrou')
-        if len(tx) >= 1:
-            if tx[0].isnumeric():
-                self.btnValor.setText(tx)
-            elif tx[0] == '-' and tx[1:].isnumeric():
-                self.btnValor.setText(tx)
+        if len(tx) >= 1 and tx.isnumeric():
+            self.btnValor.setText(f'+{tx}' if self.cmbOp.currentText()== 'soma' else f'-{tx}')
 
     @QtCore.pyqtSlot()
     def on_btnValor_click(self):
-        valor = int(self.btnValor.text())
-        self.valLcdNumber += valor
+        self.valLcdNumber += int(self.btnValor.text())
         self.lcdNumber.display(self.valLcdNumber)
 
+
+    @QtCore.pyqtSlot()
+    def on_cmbOp_change(self):
+        if self.cmbOp.currentText() == 'soma':
+            self.btnSoma1.setText('+1')
+            self.btnSoma2.setText('+2')
+            self.btnValor.setText('+' + self.btnValor.text()[1:])
+        elif self.cmbOp.currentText() == 'subtrai':
+            self.btnSoma1.setText('-1')
+            self.btnSoma2.setText('-2')
+            self.btnValor.setText('-' + self.btnValor.text()[1:])
 
 
 #FUNÇÃO MAIN PADRÃO
